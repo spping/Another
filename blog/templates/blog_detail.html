@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>blog Detail</title>
+    <style>
+        #id_comment{
+            width: 100%
+        }
+        #comment_attr{
+            float: right;
+            color:brown;
+        }
+        .bor{
+            margin-bottom: 10%;
+        }
+        input{
+            width: 30%;
+            padding-bottom: 1%;
+            padding-top: 1%;
+            float: right;
+            background: wheat;
+            border: white;
+        }
+        a{
+            text-decoration: none;
+            padding-left: 5%;
+            padding-bottom: 5%;
+        }
+
+    </style>
+</head>
+<body>
+    <p><strong>Author:</strong><a href="">{{ object.uid.uname }}</a></p>
+    <p><strong>Title:</strong><a href="">{{ object.title }}</a></p>
+    <p><strong>Date:</strong><a href="">{{ object.date }}</a></p>
+    <p>{{ object.content }}</p>
+    <div class="bor">
+        <form action="../comment" method="post">{% csrf_token %}
+            <label for="id_content">Comment:</label>
+            <textarea name="comment" cols="40" rows="10" class="vLargeTextField" id="id_comment"></textarea>
+            <input type="submit" value="Post it"/>
+        </form>
+    </div>
+    <p>{% for comment in Comment %}
+        {% if comment.cid == object.tid %}
+        <li>{{comment.comment}}</li>
+        <div id="comment_attr">
+            <p><strong>{{comment.date}}</strong> by <strong>{{comment.uid.uname}}</strong></p>
+            <a href={% url 'comment' comment.tid %}>comment it</a>
+        </div>
+        {% endif %}
+    {% endfor %}</p>
+</body>
+</html>

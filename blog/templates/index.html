@@ -1,0 +1,43 @@
+{% extends "base_generic.html" %}
+
+{% block css %}
+  .index{
+    float:right;
+    width:40%
+  }
+  ul{
+    color:orange;
+  }
+{% endblock %}
+
+{% block content %}
+<br>
+<h1>Diy Blog</h1>
+
+  <p>Welcome to <em>Diy Blog</em>, a very basic Django website developed as a tutorial example on the Mozilla Developer Network.</p>
+
+<h2>Dynamic content</h2>
+
+  <p>The blog has the following latest posts:</p>
+  <!-- <ul>
+    <li><strong>Books:</strong> {{ num_books }}</li>
+    <li><strong>Copies:</strong> {{ num_instances }}</li>
+    <li><strong>Copies available:</strong> {{ num_instances_available }}</li>
+    <li><strong>Authors:</strong> {{ num_authors }}</li>
+  </ul> -->
+  <ul>
+    {% for blog in blog_list %}
+    <li>
+      <a href={% url 'detail' blog.tid %}>{{ blog.title }}</a>
+    </li>
+    {% endfor %}
+  </ul>
+  <br>
+  <div class="index">
+    <a href={% url 'registe' %}>registe</a>
+    <a href={% url 'login' %}>login</a>
+    <a href={% url 'logout' %}>logout</a>
+    <a href={% url 'pblog' %}>post a blog</a>
+  </div>
+
+{% endblock %}

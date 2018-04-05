@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+</head>
+<body>      
+    <form method="POST">{% csrf_token %}
+        <div>
+            <label for="id_content">Title:</label>
+            <textarea name="title" cols="20" rows="1" class="vLargeTextField" id="id_content"></textarea>
+            <label for="id_content">Content:</label>
+            <textarea name="content" cols="40" rows="10" class="vLargeTextField" id="id_content"></textarea>
+        </div>
+        <input type="submit" value="Post it"/>
+    </form>
+</body>
+</html>

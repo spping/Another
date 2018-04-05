@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        button{
+            margin-top: 20%;
+            height: 20%;/*长宽应该要按照自己的代码设置，此处外层有嵌套，所以用百分比*/
+            width: 100%;
+            border-radius: 10px;
+            border: 1px solid black;
+            text-align: center;
+            background:rgba(255, 251, 240, 0.3); /*R G B opacity*/
+        }
+        form{
+            color:aqua;
+            position: absolute;
+            top: 30%;
+            left: 40%;
+            font-size: 20px;
+        }
+        input{
+            float: right;
+            width: 50%;
+            border: 1px solid black;
+            background:rgba(255, 251, 240, 0.3); /*R G B opacity*/
+        }
+        </style>
+</head>
+<body>
+    <form method="POST" class="post-form">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-default">{{ action }}</button>
+    </form>
+</body>
+</html>
